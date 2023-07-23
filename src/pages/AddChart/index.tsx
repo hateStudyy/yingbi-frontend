@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 
 /**
- * 我的图表图表页面
+ * 添加图表
  * @constructor
  */
 const AddChart: React.FC = () => {
