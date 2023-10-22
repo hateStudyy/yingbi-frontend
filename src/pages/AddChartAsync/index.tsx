@@ -5,7 +5,7 @@ import {Button, Card, Form, Input, message, Select, Space, Upload} from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React, { useState } from 'react';
 import {useForm} from "antd/es/form/Form";
-import {genChartByAiAsyncUsingPOST} from "@/services/yubi/chartController";
+import {genChartByAiAsyncMqUsingPOST, genChartByAiAsyncUsingPOST} from "@/services/yubi/chartController";
 
 /**
  * 添加图表
@@ -32,7 +32,8 @@ const AddChartAsync: React.FC = () => {
       file: undefined,
     };
     try {
-      const res = await genChartByAiAsyncUsingPOST(params, {}, values.file.file.originFileObj);
+      // const res = await genChartByAiAsyncUsingPOST(params, {}, values.file.file.originFileObj);
+      const res = await genChartByAiAsyncMqUsingPOST(params, {}, values.file.file.originFileObj);
       if (!res?.data) {
         message.error('分析失败');
       } else {
