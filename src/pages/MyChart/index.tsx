@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { listMyChartByPageUsingPOST } from '@/services/yubi/chartController';
+import { listMyChartByPageUsingPOST } from '@/services/yingbi/chartController';
 import {Avatar, Card, List, message, Result} from 'antd';
 import ReactECharts from 'echarts-for-react';
 import { useModel } from '@umijs/max';

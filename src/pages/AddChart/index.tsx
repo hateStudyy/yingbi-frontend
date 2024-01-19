@@ -1,4 +1,4 @@
-import { genChartByAiUsingPOST } from '@/services/yubi/chartController';
+import { genChartByAiUsingPOST } from '@/services/yingbi/chartController';
 import { UploadOutlined } from '@ant-design/icons';
 import {Button, Card, Col, Divider, Form, Input, message, Row, Select, Space, Spin, Upload} from 'antd';
 

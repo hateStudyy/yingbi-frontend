@@ -5,7 +5,7 @@ import {Button, Card, Form, Input, message, Select, Space, Upload} from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React, { useState } from 'react';
 import {useForm} from "antd/es/form/Form";
-import {genChartByAiAsyncMqUsingPOST, genChartByAiAsyncUsingPOST} from "@/services/yubi/chartController";
+import {genChartByAiAsyncMqUsingPOST, genChartByAiAsyncUsingPOST} from "@/services/yingbi/chartController";
 
 /**
  * 添加图表

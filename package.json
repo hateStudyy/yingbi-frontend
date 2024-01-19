@@ -1,8 +1,8 @@
 {
-  "name": "ant-design-pro",
-  "version": "6.0.0",
+  "name": "yingbi-frontend",
+  "version": "0.0.1",
   "private": true,
-  "description": "An out-of-box UI solution for enterprise applications",
+  "description": "An AIGC platform for chart generation",
   "scripts": {
     "analyze": "cross-env ANALYZE=1 max build",
     "build": "max build",
