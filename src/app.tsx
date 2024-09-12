@@ -121,7 +121,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const request = {
-  baseURL: "http://139.155.98.29:8222",
+  baseURL: "http://localhost:8101", // 过期的在线地址 http://139.155.98.29:8222
   withCredentials: true,
   ...errorConfig,
 };

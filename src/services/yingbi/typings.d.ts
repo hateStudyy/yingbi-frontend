@@ -77,6 +77,7 @@ declare namespace API {
   };
 
   type Chart = {
+    aiModel?: string;
     chartDate?: string;
     chartType?: string;
     createTime?: string;
@@ -132,18 +133,21 @@ declare namespace API {
   };
 
   type genChartByAiAsyncMqUsingPOSTParams = {
+    aiModel?: string;
     chartType?: string;
     goal?: string;
     name?: string;
   };
 
   type genChartByAiAsyncUsingPOSTParams = {
+    aiModel?: string;
     chartType?: string;
     goal?: string;
     name?: string;
   };
 
   type genChartByAiUsingPOSTParams = {
+    aiModel?: string;
     chartType?: string;
     goal?: string;
     name?: string;

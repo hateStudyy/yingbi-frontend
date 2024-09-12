@@ -1,9 +1,24 @@
-import { genChartByAiUsingPOST } from '@/services/yingbi/chartController';
-import { UploadOutlined } from '@ant-design/icons';
-import {Button, Card, Col, Divider, Form, Input, message, Row, Select, Space, Spin, Upload} from 'antd';
-
+import {genChartByAiUsingPOST} from '@/services/yingbi/chartController';
+import {DownOutlined, UploadOutlined} from '@ant-design/icons';
+import {
+  Button,
+  Card,
+  Col,
+  Divider,
+  Dropdown,
+  Form,
+  Input,
+  MenuProps,
+  message,
+  Row,
+  Select,
+  Space,
+  Spin,
+  Upload
+} from 'antd';
+import ReactMarkdown from 'react-markdown';
 import TextArea from 'antd/es/input/TextArea';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ReactECharts from 'echarts-for-react';
 
 /**
@@ -12,6 +27,7 @@ import ReactECharts from 'echarts-for-react';
  */
 const AddChart: React.FC = () => {
   const [chart, setChart] = useState<API.BiResponse>();
+  const [aiModel, setAiModel] = useState<string>();
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [option, setOption] = useState<any>();
 
@@ -30,6 +46,7 @@ const AddChart: React.FC = () => {
     // 对接后端 上传数据
     const params = {
       ...values,
+      aiModel: aiModel,
       file: undefined,
     };
     try {
@@ -53,9 +70,42 @@ const AddChart: React.FC = () => {
     setSubmitting(false);
   };
 
+  const onClick: MenuProps['onClick'] = ({ key }) => {
+    setAiModel(key);
+    message.info(`Click on item ${key}`);
+  };
+
+  // useEffect(() => {
+  //   // 在 aiModel 更新后运行
+  //   alert('AI Model updated:'+ aiModel);
+  // }, [aiModel]);
+
+  const items: MenuProps['items'] = [
+    {
+      label: 'ChatGPT',
+      key: 'chatgpt',
+    },
+    {
+      label: '鱼聪明',
+      key: 'yucongming',
+    },
+    {
+      label: '豆包',
+      key: 'doubao',
+    },
+  ];
   return (
     <div className="add-chart">
       我的图表
+      <br/>
+      <Dropdown menu={{ items, onClick }}>
+        <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            {aiModel?aiModel:"请选择AI模型"}
+            <DownOutlined />
+          </Space>
+        </a>
+      </Dropdown>
       <Row gutter={24}>
         <Col span={12}>
           <Card title={'智能分析'}>
@@ -111,7 +161,14 @@ const AddChart: React.FC = () => {
         </Col>
         <Col span={12}>
           <Card title={'分析结论'}>
-            {chart?.genResult} <div>请先在左侧进行提交</div>
+            {/* // TODO 支持 markdown 语法 */}
+            {chart?.genResult ? (
+              <ReactMarkdown>{chart.genResult}</ReactMarkdown>
+            ) : (
+              <div>请先在左侧进行提交</div>
+            )}
+            {/*<ReactMarkdown>{chart?.genResult} </ReactMarkdown>*/}
+            {/*<div>请先在左侧进行提交</div>*/}
             <Spin spinning={submitting}></Spin>
           </Card>
           <Divider></Divider>

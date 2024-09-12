@@ -1,11 +1,10 @@
-
-import { UploadOutlined } from '@ant-design/icons';
+import {UploadOutlined} from '@ant-design/icons';
 import {Button, Card, Form, Input, message, Select, Space, Upload} from 'antd';
 
 import TextArea from 'antd/es/input/TextArea';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {useForm} from "antd/es/form/Form";
-import {genChartByAiAsyncMqUsingPOST, genChartByAiAsyncUsingPOST} from "@/services/yingbi/chartController";
+import {genChartByAiAsyncUsingPOST} from "@/services/yingbi/chartController";
 
 /**
  * 添加图表
@@ -33,7 +32,7 @@ const AddChartAsync: React.FC = () => {
     };
     try {
       // const res = await genChartByAiAsyncUsingPOST(params, {}, values.file.file.originFileObj);
-      const res = await genChartByAiAsyncMqUsingPOST(params, {}, values.file.file.originFileObj);
+      const res = await genChartByAiAsyncUsingPOST(params, {}, values.file.file.originFileObj);
       if (!res?.data) {
         message.error('分析失败');
       } else {
