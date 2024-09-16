@@ -1,5 +1,5 @@
-import {UploadOutlined} from '@ant-design/icons';
-import {Button, Card, Form, Input, message, Select, Space, Upload} from 'antd';
+import {DownOutlined, UploadOutlined} from '@ant-design/icons';
+import {Button, Card, Dropdown, Form, Input, MenuProps, message, Select, Space, Upload} from 'antd';
 
 import TextArea from 'antd/es/input/TextArea';
 import React, {useState} from 'react';
@@ -12,6 +12,7 @@ import {genChartByAiAsyncUsingPOST} from "@/services/yingbi/chartController";
  */
 const AddChartAsync: React.FC = () => {
   const [form] = useForm();
+  const [aiModel, setAiModel] = useState<string>();
   const [submitting, setSubmitting] = useState<boolean>(false);
 
 
@@ -28,6 +29,7 @@ const AddChartAsync: React.FC = () => {
     // 对接后端 上传数据
     const params = {
       ...values,
+      aiModel: aiModel,
       file: undefined,
     };
     try {
@@ -45,9 +47,36 @@ const AddChartAsync: React.FC = () => {
     setSubmitting(false);
   };
 
+  const onClick: MenuProps['onClick'] = ({ key }) => {
+    setAiModel(key);
+    message.info(`Click on item ${key}`);
+  };
+  const items: MenuProps['items'] = [
+    {
+      label: 'ChatGPT',
+      key: 'chatgpt',
+    },
+    {
+      label: '鱼聪明',
+      key: 'yucongming',
+    },
+    {
+      label: '豆包',
+      key: 'doubao',
+    },
+  ];
+
   return (
     <div className="add-chart-async">
       <Card title={'智能分析'}>
+        <Dropdown menu={{ items, onClick }}>
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>
+              {aiModel?aiModel:"请选择AI模型"}
+              <DownOutlined />
+            </Space>
+          </a>
+        </Dropdown>
         <Form form={form} name="addChart" labelCol={{ span: 4 }}
               wrapperCol={{ span:14 }} onFinish={onFinish} initialValues={{}}>
           <Form.Item

@@ -14,8 +14,8 @@
     icon: 'crown',
     access: 'canAdmin',
     routes: [
-      { path: '/admin', name: '管理页面', redirect: '/admin/sub-page' },
-      { path: '/admin/sub-page', name: '管理页面2', component: './Admin' },
+      { path: '/admin', name: '我的图表', icon: 'pieChartOutlined', component: './MyChart' },
+      { path: '/admin/sub-page', name: '我的图表', icon: 'pieChartOutlined', component: './MyChart' },
     ],
   },
   { path: '*', layout: false, component: './404' },

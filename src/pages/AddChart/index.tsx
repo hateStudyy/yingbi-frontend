@@ -70,7 +70,7 @@ const AddChart: React.FC = () => {
     setSubmitting(false);
   };
 
-  const onClick: MenuProps['onClick'] = ({ key }) => {
+  const onClick: MenuProps['onClick'] = ({key}) => {
     setAiModel(key);
     message.info(`Click on item ${key}`);
   };
@@ -96,25 +96,24 @@ const AddChart: React.FC = () => {
   ];
   return (
     <div className="add-chart">
-      我的图表
-      <br/>
-      <Dropdown menu={{ items, onClick }}>
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            {aiModel?aiModel:"请选择AI模型"}
-            <DownOutlined />
-          </Space>
-        </a>
-      </Dropdown>
+
       <Row gutter={24}>
         <Col span={12}>
           <Card title={'智能分析'}>
-            <Form name="addChart" labelCol={{ span: 4 }}
-                  wrapperCol={{ span:14 }} onFinish={onFinish} initialValues={{}}>
+            <Dropdown menu={{items, onClick}}>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  {aiModel ? aiModel : "请选择AI模型"}
+                  <DownOutlined/>
+                </Space>
+              </a>
+            </Dropdown>
+            <Form name="addChart" labelCol={{span: 4}}
+                  wrapperCol={{span: 14}} onFinish={onFinish} initialValues={{}}>
               <Form.Item
                 name="goal"
                 label="分析目标"
-                rules={[{ required: true, message: '请输入分析目标' }]}
+                rules={[{required: true, message: '请输入分析目标'}]}
               >
                 <TextArea placeholder="请输入你的分析诉求，比如：分析网站用户的增长情况"></TextArea>
               </Form.Item>
@@ -126,24 +125,24 @@ const AddChart: React.FC = () => {
               <Form.Item name="chartType" label="图表类型">
                 <Select
                   options={[
-                    { value: '折线图', label: '折线图' },
-                    { value: '柱状图', label: '柱状图' },
-                    { value: '堆叠图', label: '堆叠图' },
-                    { value: '饼图', label: '饼图' },
-                    { value: '雷达图', label: '雷达图' },
-                    { value: '大数据量面积图', label: '大数据量面积图' },
-                    { value: '渐变堆叠面积图', label: '渐变堆叠面积图' },
+                    {value: '折线图', label: '折线图'},
+                    {value: '柱状图', label: '柱状图'},
+                    {value: '堆叠图', label: '堆叠图'},
+                    {value: '饼图', label: '饼图'},
+                    {value: '雷达图', label: '雷达图'},
+                    {value: '大数据量面积图', label: '大数据量面积图'},
+                    {value: '渐变堆叠面积图', label: '渐变堆叠面积图'},
                   ]}
                 ></Select>
               </Form.Item>
 
               <Form.Item name="file" label="原始数据">
                 <Upload name="file" maxCount={1}>
-                  <Button icon={<UploadOutlined />}>上传csv文件</Button>
+                  <Button icon={<UploadOutlined/>}>上传csv文件</Button>
                 </Upload>
               </Form.Item>
 
-              <Form.Item wrapperCol={{ span: 14, offset: 4 }}>
+              <Form.Item wrapperCol={{span: 14, offset: 4}}>
                 <Space>
                   <Button
                     type="primary"
@@ -173,11 +172,12 @@ const AddChart: React.FC = () => {
           </Card>
           <Divider></Divider>
           <Card title={'可视化图表'}>
-            {option ? <ReactECharts option={option} /> : <div>请先在左侧进行提交</div>}
+            {option ? <ReactECharts option={option}/> : <div>请先在左侧进行提交</div>}
             <Spin spinning={submitting}></Spin>
           </Card>
         </Col>
       </Row>
+
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import Footer from '@/components/Footer';
-import { listChartByPageUsingPOST } from '@/services/yingbi/chartController';
+import {listChartByPageUsingPOST} from '@/services/yingbi/chartController';
 import {getLoginUserUsingGET, userLoginUsingPOST} from '@/services/yingbi/userController';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { LoginForm, ProFormText } from '@ant-design/pro-components';
-import { useEmotionCss } from '@ant-design/use-emotion-css';
+import {LockOutlined, UserOutlined} from '@ant-design/icons';
+import {LoginForm, ProFormText} from '@ant-design/pro-components';
+import {useEmotionCss} from '@ant-design/use-emotion-css';
 import {Helmet, history, useModel} from '@umijs/max';
-import { message, Tabs } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'umi';
+import {message, Tabs} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'umi';
 import Settings from '../../../../config/defaultSettings';
 import {flushSync} from "react-dom";
 
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
       backgroundSize: '100% 100%',
     };
   });
-  const { initialState, setInitialState } = useModel('@@initialState');
+  const { setInitialState } = useModel('@@initialState');
   /**
    * 登陆成功后，获取用户登录信息
    */
@@ -34,7 +34,7 @@ const Login: React.FC = () => {
       flushSync(() => {
         setInitialState((s) => ({
           ...s,
-          currentUser: userInfo,
+          currentUser: userInfo.data
         }));
       });
     }

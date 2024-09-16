@@ -1,4 +1,4 @@
-import { ProLayoutProps } from '@ant-design/pro-components';
+import {ProLayoutProps} from '@ant-design/pro-components';
 
 /**
  * @name
@@ -12,10 +12,10 @@ const Settings: ProLayoutProps & {
   colorPrimary: '#1890ff',
   layout: 'mix',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: '音猫智图 BI 平台',
+  title: '影智能平台',
   pwa: true,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
